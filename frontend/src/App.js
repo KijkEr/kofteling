@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -15,25 +15,27 @@ import { NavigationBar } from './components/NavigationBar.js';
 
 import { AuthContext } from "./context/auth";
 
-function App(props) {
-  return (
-    <AuthContext.Provider value={false}>
-      <BrowserRouter>
-        <NavigationBar />
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <PrivateRoute path="/admin" component={Admin} />
-            <Route component={NoMatch} />
-          </Switch>
-        </Layout>
-      </BrowserRouter>
-    </AuthContext.Provider>
-  );
+class App extends Component {
+  render() {
+    return (
+      <AuthContext.Provider value={false}>
+        <BrowserRouter>
+          <NavigationBar />
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <PrivateRoute path="/admin" component={Admin} />
+              <Route component={NoMatch} />
+            </Switch>
+          </Layout>
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+  }
 }
 
 export default App;

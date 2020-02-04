@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
 import { register } from '../components/UserFunctions.js'
-import axios from 'axios'
 
 
 class SignUp extends Component {
@@ -29,9 +26,8 @@ class SignUp extends Component {
       password: this.state.password
     }
 
-    register(newUser)
-    .then(res => {
-      this.props.history.push('/Login')
+    register(newUser).then(res => {
+      this.props.history.push(`/login`)
     })
   }
 
